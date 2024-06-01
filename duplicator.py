@@ -1,11 +1,10 @@
 from pathlib import Path
 import re
 import os
-import time
 from subprocess import Popen
 
 FILE_NAME_PATTERN = re.compile(r'(\D*)(\d*)\.py')
-MAX_DUPLICATES=1000
+MAX_DUPLICATES=100
 def main():
     print("I am: " + __file__)
     me = Path(__file__)
@@ -20,7 +19,7 @@ def main():
         needNewName = clone.exists()
     
     duplicate(clone)
-    Popen(['python', str(clone)])
+    os.system('start python "' + str(clone) + '"')
     
     
     
