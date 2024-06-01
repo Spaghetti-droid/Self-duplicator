@@ -1,12 +1,10 @@
 from pathlib import Path
 import re
 import os
-from subprocess import Popen
 
 FILE_NAME_PATTERN = re.compile(r'(\D*)(\d*)\.py')
 MAX_DUPLICATES=100
 def main():
-    print("I am: " + __file__)
     me = Path(__file__)
     cloneName = me.name
     needNewName = True
@@ -37,7 +35,6 @@ def makeNewName(oldName:str) -> tuple:
     return (baseName + str(index) + ".py", index)
 
 def duplicate(target: Path) -> None:
-    print("cloning to " + str(target))
     with open(__file__, 'rb') as s, open(target, 'xb') as t:
         t.write(s.read())
 
